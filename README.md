@@ -83,10 +83,7 @@ To use Vagrant within this document you should..
  9. Once it has configured, type in "vagrant ssh". This will open up ubuntu on to your device.
  10. Inside the ubuntu shell, type in "sudo apt-get update -y". This will allow you to check and install any updates which is needed.
  11. Once the update has been installed, type in "sudo apt-get install nginx -y". This will install the web-server nginx.
-
- 
  12. After installing nginx, type "exit", to exit the shell.
-
  13. When out of the shell, type in "vagrant plugin install vagrant-hostsupdater". This will give the server an ip address, so that you can access the server.
  14. Once finished installing the plugin, type in "vagrant reload". This is usually required for changes made in the Vagrantfile to take effect, modifying the server.
  15. To test it out, open up a web browser.

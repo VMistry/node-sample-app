@@ -68,13 +68,27 @@ To use Vagrant within this document you should..
     4. Then select system preferences/security and privacy
     5. When in security and privacy, accept the software. This will allow you to successfully install the software.
  3. In your terminal, navigate to the "node-sample-app.git" folder. This should contain the Vagrant files inside.
- 4. In the terminal, type in "vagrant up". This command will creates and configures guest machines according to its Vagrantfile.
- 5. Once it has configured, type in "vagrant ssh". This will open up ubuntu on to your device.
- 6. Inside the ubuntu shell, type in "sudo apt-get update -y". This will allow you to check and install any updates which is needed.
- 7. Once the update has been installed, type in "sudo apt-get install nginx -y". This will install the web-server nginx.
- 8. After installing nginx, type "exit", to exit the shell.
- 9. When out of the shell, type in "vagrant plugin install vagrant-hostsupdater". This will give the server an ip address, so that you can access the server.
- 10. Once finished installing the plugin, type in "vagrant reload". This is usually required for changes made in the Vagrantfile to take effect, modifying the server.
- 11. To test it out, open up a web browser.
- 12. In the URL type in "http://development.local/". This will run your server. Below should happen.
+ 4. Then you should type in "vagrant init", to create a vagrant folder in side the file.
+ 5. Type in "atom ." inside the terminal, this will open up the atom software, to edit the vagrant file inside.
+ 6. Once the app is open, go in to the vagrant file, delete the contents inside and type in the following...
+ ```ruby
+ Vagrant.configure("2") do |config|
+   config.vm.box = "ubuntu/xenial64"
+   config.vm.network("private_network", ip: "192.168.10.100")
+   config.hostsupdater.aliases = ["development.local"]
+ end
+ ```
+ 7. Save the code and close atom.
+ 8. In the terminal, type in "vagrant up". This command will creates and configures guest machines according to its Vagrantfile.
+ 9. Once it has configured, type in "vagrant ssh". This will open up ubuntu on to your device.
+ 10. Inside the ubuntu shell, type in "sudo apt-get update -y". This will allow you to check and install any updates which is needed.
+ 11. Once the update has been installed, type in "sudo apt-get install nginx -y". This will install the web-server nginx.
+
+ 
+ 12. After installing nginx, type "exit", to exit the shell.
+
+ 13. When out of the shell, type in "vagrant plugin install vagrant-hostsupdater". This will give the server an ip address, so that you can access the server.
+ 14. Once finished installing the plugin, type in "vagrant reload". This is usually required for changes made in the Vagrantfile to take effect, modifying the server.
+ 15. To test it out, open up a web browser.
+ 16. In the URL type in "http://development.local/". This will run your server. Below should happen.
  ![picture alt](Results.png)
